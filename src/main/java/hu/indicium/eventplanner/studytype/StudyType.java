@@ -1,4 +1,6 @@
-package hu.indicium.eventplanner.group;
+package hu.indicium.eventplanner.studytype;
+
+import hu.indicium.eventplanner.group.Group;
 
 import javax.persistence.*;
 import java.util.ArrayList;
