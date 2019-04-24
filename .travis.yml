@@ -4,7 +4,6 @@ jdk: openjdk11
 
 services:
   - docker
-  - postgresql
 
 before_script:
   - bash ./.travis/install-postgres-11.sh
