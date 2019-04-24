@@ -1,6 +1,6 @@
 package hu.indicium.eventplanner.group;
 
-import hu.indicium.eventplanner.calendar.Calendar;
+import hu.indicium.eventplanner.schedule.Schedule;
 import hu.indicium.eventplanner.studytype.StudyType;
 
 import javax.persistence.*;
@@ -27,7 +27,7 @@ public class Group {
     private StudyType studyType;
 
     @OneToMany(mappedBy = "group")
-    private Set<Calendar> calendars = new HashSet<>();
+    private Set<Schedule> schedules = new HashSet<>();
 
     public Group() {
     }
@@ -70,15 +70,15 @@ public class Group {
         this.studyType = studyType;
     }
 
-    public Set<Calendar> getCalendars() {
-        return calendars;
+    public Set<Schedule> getSchedules() {
+        return schedules;
     }
 
-    public void setCalendars(Set<Calendar> calendars) {
-        this.calendars = calendars;
+    public void setSchedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
     }
 
-    public void addCalendar(Calendar calendar) {
-        this.calendars.add(calendar);
+    public void addCalendar(Schedule schedule) {
+        this.schedules.add(schedule);
     }
 }
