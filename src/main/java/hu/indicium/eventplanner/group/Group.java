@@ -16,6 +16,9 @@ public class Group {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "size")
+    private Long size = 0L;
+
     @Column(name = "schedule_url")
     private String scheduleUrl;
 
@@ -26,8 +29,9 @@ public class Group {
     public Group() {
     }
 
-    public Group(String name, String scheduleUrl, StudyType studyType) {
+    public Group(String name, Long size, String scheduleUrl, StudyType studyType) {
         this.name = name;
+        this.size = size;
         this.scheduleUrl = scheduleUrl;
         this.studyType = studyType;
     }
@@ -36,12 +40,24 @@ public class Group {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getSize() {
+        return size;
+    }
+
+    public void setSize(Long size) {
+        this.size = size;
     }
 
     public String getScheduleUrl() {
