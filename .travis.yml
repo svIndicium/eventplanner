@@ -7,7 +7,6 @@ services:
 
 before_script:
   - bash ./.travis/install-postgres-11.sh
-  - psql -c 'create database travis_ci_test;' -U postgres
 
 git:
   depth: 9999999
