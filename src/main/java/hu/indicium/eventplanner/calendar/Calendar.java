@@ -15,6 +15,12 @@ public class Calendar {
     @Column(name = "schedule_url")
     private String scheduleUrl;
 
+    @Column(name = "calendar_name")
+    private String calendarName;
+
+    @Column(name = "calendar_desc")
+    private String calendarDescription;
+
     @ManyToOne
     @JoinColumn(name = "group")
     private Group group;
@@ -41,6 +47,22 @@ public class Calendar {
 
     public void setScheduleUrl(String scheduleUrl) {
         this.scheduleUrl = scheduleUrl;
+    }
+
+    public String getCalendarName() {
+        return calendarName;
+    }
+
+    public void setCalendarName(String calendarName) {
+        this.calendarName = calendarName;
+    }
+
+    public String getCalendarDescription() {
+        return calendarDescription;
+    }
+
+    public void setCalendarDescription(String calendarDescription) {
+        this.calendarDescription = calendarDescription;
     }
 
     public Group getGroup() {
