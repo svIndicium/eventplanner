@@ -1,9 +1,12 @@
 package hu.indicium.eventplanner.studytype;
 
+import hu.indicium.eventplanner.studytype.dto.NewStudyTypeDTO;
 import hu.indicium.eventplanner.studytype.dto.StudyTypeDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,7 +32,17 @@ public class StudyTypeController {
                 .collect(Collectors.toList());
     }
 
+    @PostMapping("/types")
+    public StudyTypeDTO addNewType(@RequestBody NewStudyTypeDTO studyTypeDTO) {
+        StudyType studyType = this.toStudyType(studyTypeDTO);
+        return this.toStudyTypeDTO(studyTypeService.addStudyType(studyType));
+    }
+
     private StudyTypeDTO toStudyTypeDTO(StudyType studyType) {
         return this.modelMapper.map(studyType, StudyTypeDTO.class);
+    }
+
+    private StudyType toStudyType(NewStudyTypeDTO studyTypeDTO) {
+        return this.modelMapper.map(studyTypeDTO, StudyType.class);
     }
 }
