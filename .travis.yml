@@ -12,7 +12,7 @@ git:
   depth: 9999999
 
 script:
-  - ./gradlew test
+  - ./gradlew test -i
 
 cache:
   directories:
