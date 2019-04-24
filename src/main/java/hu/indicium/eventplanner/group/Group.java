@@ -1,8 +1,11 @@
 package hu.indicium.eventplanner.group;
 
+import hu.indicium.eventplanner.calendar.Calendar;
 import hu.indicium.eventplanner.studytype.StudyType;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "groups")
@@ -19,20 +22,19 @@ public class Group {
     @Column(name = "size")
     private Long size = 0L;
 
-    @Column(name = "schedule_url")
-    private String scheduleUrl;
-
     @ManyToOne
     @JoinColumn(name = "study_type")
     private StudyType studyType;
 
+    @OneToMany(mappedBy = "group")
+    private Set<Calendar> calendars = new HashSet<>();
+
     public Group() {
     }
 
-    public Group(String name, Long size, String scheduleUrl, StudyType studyType) {
+    public Group(String name, Long size, StudyType studyType) {
         this.name = name;
         this.size = size;
-        this.scheduleUrl = scheduleUrl;
         this.studyType = studyType;
     }
 
@@ -60,19 +62,23 @@ public class Group {
         this.size = size;
     }
 
-    public String getScheduleUrl() {
-        return scheduleUrl;
-    }
-
-    public void setScheduleUrl(String scheduleUrl) {
-        this.scheduleUrl = scheduleUrl;
-    }
-
     public StudyType getStudyType() {
         return studyType;
     }
 
     public void setStudyType(StudyType studyType) {
         this.studyType = studyType;
+    }
+
+    public Set<Calendar> getCalendars() {
+        return calendars;
+    }
+
+    public void setCalendars(Set<Calendar> calendars) {
+        this.calendars = calendars;
+    }
+
+    public void addCalendar(Calendar calendar) {
+        this.calendars.add(calendar);
     }
 }
