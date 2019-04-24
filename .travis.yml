@@ -1,0 +1,16 @@
+sudo: required
+language: java
+jdk: openjdk11
+
+git:
+  depth: 9999999
+
+script:
+  - ./gradlew test
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
+    - '$HOME/.gradle'
+    - '.gradle'
