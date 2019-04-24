@@ -4,10 +4,9 @@ create table groups
         constraint groups_pkey
             primary key,
     name         varchar(255) not null,
-    schedule_url varchar(255),
     size         bigint,
     study_type   bigint
-        constraint group_study_type
+        constraint fk_group_study_type
             references study_type
 );
 

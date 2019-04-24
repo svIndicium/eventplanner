@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Table(name = "calendar")
 public class Calendar {
     @Id
-    @GeneratedValue(generator = "group_id_seq", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "group_id_seq", sequenceName = "group_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "calendar_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "calendar_id_seq", sequenceName = "calendar_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "schedule_url")
@@ -22,7 +22,7 @@ public class Calendar {
     private String calendarDescription;
 
     @ManyToOne
-    @JoinColumn(name = "group")
+    @JoinColumn(name = "group_id")
     private Group group;
 
     public Calendar() {
