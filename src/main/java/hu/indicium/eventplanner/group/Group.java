@@ -1,5 +1,7 @@
 package hu.indicium.eventplanner.group;
 
+import hu.indicium.eventplanner.studytype.StudyType;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,10 +23,17 @@ public class Group {
     @JoinColumn(name = "study_type")
     private StudyType studyType;
 
+    public Group() {
+    }
+
     public Group(String name, String scheduleUrl, StudyType studyType) {
         this.name = name;
         this.scheduleUrl = scheduleUrl;
         this.studyType = studyType;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
