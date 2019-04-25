@@ -6,6 +6,8 @@ import hu.indicium.eventplanner.schedule.exceptions.EventAlreadyExistsException;
 import net.fortuna.ical4j.data.CalendarBuilder;
 import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.model.Calendar;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -14,6 +16,9 @@ import java.text.ParseException;
 
 @Component
 public class ScheduleParser implements ScheduleParserInterface {
+
+    private static final Logger logger = LoggerFactory.getLogger(ScheduleParser.class);
+
     private final EventParserInterface eventParser;
 
     public ScheduleParser(EventParserInterface eventParser) {
@@ -32,8 +37,10 @@ public class ScheduleParser implements ScheduleParserInterface {
                     Event event = eventParser.parseEvent(component, schedule);
                     schedule.addEvent(event);
                 }
-            } catch (ParseException | EventAlreadyExistsException e) {
-                e.printStackTrace();
+            } catch (EventAlreadyExistsException e) {
+                logger.debug(e.getMessage());
+            } catch (ParseException e) {
+                logger.error(e.getMessage());
             }
         }
         return schedule;
