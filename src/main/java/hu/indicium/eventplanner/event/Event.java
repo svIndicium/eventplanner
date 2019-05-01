@@ -108,6 +108,7 @@ public class Event {
         if (o == null || getClass() != o.getClass()) return false;
         Event event = (Event) o;
         return Objects.equals(summary, event.summary) &&
+                Objects.equals(location, event.location) &&
                 Objects.equals(startDate.getTime(), event.startDate.getTime()) &&
                 Objects.equals(endDate.getTime(), event.endDate.getTime());
     }

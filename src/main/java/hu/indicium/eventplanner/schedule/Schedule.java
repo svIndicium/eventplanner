@@ -20,10 +20,10 @@ public class Schedule {
     private String scheduleUrl;
 
     @Column(name = "schedule_name")
-    private String scheduleName;
+    private String name;
 
     @Column(name = "schedule_desc")
-    private String scheduleDescription;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "group_id")
@@ -56,20 +56,20 @@ public class Schedule {
         this.scheduleUrl = scheduleUrl;
     }
 
-    public String getScheduleName() {
-        return scheduleName;
+    public String getName() {
+        return name;
     }
 
-    public void setScheduleName(String scheduleName) {
-        this.scheduleName = scheduleName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getScheduleDescription() {
-        return scheduleDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setScheduleDescription(String scheduleDescription) {
-        this.scheduleDescription = scheduleDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Group getGroup() {

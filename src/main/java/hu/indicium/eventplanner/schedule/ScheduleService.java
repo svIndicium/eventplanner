@@ -1,5 +1,6 @@
 package hu.indicium.eventplanner.schedule;
 
+import hu.indicium.eventplanner.schedule.exceptions.ScheduleNotFoundException;
 import net.fortuna.ical4j.data.ParserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,12 @@ public class ScheduleService implements ScheduleServiceInterface {
     @Override
     public List<Schedule> getSchedules() {
         return scheduleRepository.findAll();
+    }
+
+    @Override
+    public Schedule getScheduleById(Long id) {
+        return scheduleRepository.findById(id)
+                .orElseThrow(() -> new ScheduleNotFoundException(id));
     }
 
     @Override

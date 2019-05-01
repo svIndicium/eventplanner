@@ -29,8 +29,8 @@ public class ScheduleParser implements ScheduleParserInterface {
     public Schedule updateSchedule(Schedule schedule) throws IOException, ParserException {
         CalendarBuilder calendarBuilder = new CalendarBuilder();
         Calendar calendar = calendarBuilder.build(ScheduleRetriever.getSchedule(new URL(schedule.getScheduleUrl())));
-        schedule.setScheduleName(calendar.getProperty("X-WR-CALNAME").getValue());
-        schedule.setScheduleDescription(calendar.getProperty("X-WR-CALDESC").getValue());
+        schedule.setName(calendar.getProperty("X-WR-CALNAME").getValue());
+        schedule.setDescription(calendar.getProperty("X-WR-CALDESC").getValue());
         for (net.fortuna.ical4j.model.Component component : calendar.getComponents()) {
             try {
                 if (!component.getName().equals("VTIMEZONE")) {
